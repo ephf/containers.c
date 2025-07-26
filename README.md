@@ -116,13 +116,13 @@ struct Option__int {
 
 While that may seem like it works, you then have to think about how you are going to design a macro that does this. At first you could try just creating an unnamed struct everytime you call the `Option(T)` macro, something like this
 
-```
+```c
 #define Option(T) struct { bool is_some; T value; }
 ```
 
 This approach has a major flaw though: C compilers do not like when you try to cast two anonymous struct types to eachother
 
-```
+```c
 // in code like this, you will get an error that these two variables
 // don't have the same type
 Option(int) a;
